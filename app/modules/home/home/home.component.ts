@@ -36,29 +36,9 @@ import {REPEATER2_DIRECTIVES} from "../../../structural-demo/repeater2";
         
         </div>
         -->
-        
-        <button type="button" class="btn btn-default" aria-label="Left Align">
-  <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-</button>
-        
     `
 })
 export class HomeComponent {
-    public info = "Willkommen!!!!";
+    public info = "Willkommen!";
 
-    public data = [10, 20, 30, 40, 50, 60];
-
-    public hidden = false;
-
-    constructor(http: Http) {
-        http.get('https://stage-ddw-services-gsc.us-west-2.elasticbeanstalk.com/rest/pps/resources/partnerprofile?contactName=TEST')
-            .map(r => r.json())
-            .subscribe(data => {
-                console.debug(data);
-            });
-    }
-
-    public toggle() {
-        this.hidden = !this.hidden;
-    }
 }
