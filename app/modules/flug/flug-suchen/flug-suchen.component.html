@@ -1,0 +1,114 @@
+<h1>Flug suchen!</h1>
+<form #f="ngForm">
+
+    <div class="form-group">
+        <label>Von:</label>
+        <input
+                [(ngModel)]="von"
+                name="von"
+                class="form-control"
+                required
+                ort="Graz,München,Hamburg,Frankfurt,Zürich,Wien"
+                ortAsync
+                minlength="3"
+                maxlength="30"
+                pattern="^\w+$">
+    </div>
+
+    <div *ngIf="!f?.controls?.von?.valid">
+        Fehlerhafte Eingabe!
+    </div>
+
+    <div *ngIf="f?.controls?.von?.hasError('required')">
+        Pflichtfeld!
+    </div>
+
+    <div *ngIf="f?.controls?.von?.hasError('minlength')">
+        Muss min. 3 Zeichen haben!
+    </div>
+
+    <div *ngIf="f?.controls?.von?.hasError('maxlength')">
+        Darf max. 3 Zeichen haben!
+    </div>
+
+    <div *ngIf="f?.controls?.von?.hasError('pattern')">
+        Nur Buchstaben erlaubt!
+    </div>
+
+    <div *ngIf="f?.controls?.von?.hasError('ort')">
+        Ort existiert nicht! (Mögliche Werte: Graz, Hamburg)
+    </div>
+
+    <div *ngIf="f?.controls?.von?.hasError('ortAsync')">
+        Ort wird nicht angeflogen! (Mögliche Werte: Graz, Hamburg)
+    </div>
+
+    <div *ngIf="f?.controls?.von?.pending">
+        <marquee>
+            Validierung wird durchgeführt!
+        </marquee>
+    </div>
+
+<!--
+    <pre>Errors: {{ f?.controls?.von?.errors | json }}
+Pending: {{ f?.controls?.von?.pending | json }}
+    </pre>
+-->
+    <div class="form-group">
+        <label>Nach:</label>
+        <input [(ngModel)]="nach" name="nach" class="form-control">
+    </div>
+<!--
+    <div class="form-group">
+        <label>Date:</label>
+        <date [(date)]="datum"></date>
+        {{ datum }}
+    </div>
+-->
+    <div class="form-group">
+
+        <button class="btn btn-primary"
+                (click)="suchen()" [disabled]="!von || !nach">
+            Suchen!
+        </button>
+
+
+    </div>
+
+
+    <div *ngFor="let flug of fluege" class="col-sm-4">
+        <flug-card
+                [item]="flug"
+                [(selectedItem)]="selectedFlug">
+
+            <a class="btn btn-default link1"
+               [routerLink]="['../flug-edit', flug.id, {showDetails: true}]">Edit</a>
+
+            <a class="btn btn-default link2"
+               [routerLink]="['../flug-edit', flug.id, {showDetails: true}]">Edit 2</a>
+
+        </flug-card>
+
+        <!--
+                        [selectedItem]="selectedFlug"
+                (selectedItemChange)="selectedFlug = $event"
+-->
+    </div>
+
+<!--
+    <table class="table table-striped">
+        <tr *ngFor="let flug of fluege" [class.active]="flug == selectedFlug">
+            <td>{{flug.id}}</td>
+            <td>{{flug.datum | date:'d.M.yyyy H:m'}}</td>
+            <td>{{flug.abflugort | ort:'short' }}</td>
+            <td>{{flug.zielort | ort:'long'}}</td>
+            <td><a (click)="select(flug)">Select!</a></td>
+        </tr>
+    </table>
+-->
+
+</form>
+<pre>Warenkorb
+----------------------
+{{ selectedFlug | json }}
+</pre>

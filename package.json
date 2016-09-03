@@ -1,0 +1,78 @@
+{
+  "name": "angular2-seed",
+  "version": "1.0.0",
+  "description": "A simple starter Angular2 project",
+  "scripts": {
+    "typings-install": "typings install",
+    "postinstall": "npm run typings-install",
+    "webpack": "webpack",
+    "server": "webpack-dev-server",
+    "start": "npm run server",
+    "tsc": "tsc",
+    "build": "webpack -p"
+  },
+  "contributors": [
+    "Rob Wormald <robwormald@gmail.com>",
+    "PatrickJS <github@gdi2290.com>"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "awesome-typescript-loader": "^1.0.0",
+    "es6-promise": "3.0.2",
+    "es6-shim": "0.35.0",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.4.3",
+    "jasmine-core": "2.4.1",
+    "raw-loader": "^0.5.1",
+    "reflect-metadata": "0.1.2",
+    "source-map-loader": "^0.1.5",
+    "typescript": "^1.8.10",
+    "typings": "^0.7.9",
+    "webpack": "^2.1.0-beta.21",
+    "webpack-dev-server": "^2.1.0-beta.0",
+    "webpack-merge": "^0.8.4",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-cli": "^0.1.2",
+    "karma-coverage": "^1.1.1",
+    "karma-htmlfile-reporter": "^0.2.2",
+    "karma-jasmine": "^0.3.8",
+    "karma-jasmine-html-reporter": "^0.2.1",
+    "karma-webpack": "^1.7.0"
+  },
+  "dependencies": {
+    "@angular/common": "2.0.0-rc.6",
+    "@angular/compiler": "2.0.0-rc.6",
+    "@angular/compiler-cli": "0.6.0",
+    "@angular/core": "2.0.0-rc.6",
+    "@angular/forms": "2.0.0-rc.6",
+    "@angular/http": "2.0.0-rc.6",
+    "@angular/platform-browser": "2.0.0-rc.6",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.6",
+    "@angular/router": "3.0.0-rc.2",
+    "@angular/upgrade": "2.0.0-rc.6",
+    "angular2-in-memory-web-api": "0.0.18",
+    "angular2-oauth2": "^1.3.8",
+    "bootstrap": "^3.3.6",
+    "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.11",
+    "systemjs": "0.19.27",
+    "ts-loader": "^0.8.2",
+    "zone.js": "^0.6.17"
+  },
+  "keywords": [
+    "Angular2",
+    "angular2-seed",
+    "official angular 2 seed",
+    "official angular2 seed"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular2-seed.git"
+  },
+  "bugs": {
+    "url": "https://github.com/angular/angular2-seed/issues"
+  },
+  "homepage": "https://github.com/angular/angular2-seed#readme"
+}

@@ -1,0 +1,107 @@
+<h1>Flug suchen! (Reactive!)</h1>
+
+
+
+
+<form [formGroup]="filter">
+
+    <h2>Dynamisches Formular</h2>
+    <div *ngFor="let entry of formDesc" class="form-group">
+        <label>{{entry.label}}</label>
+        <input
+                [formControlName]="entry.name"
+                class="form-control">
+    </div>
+
+    <h2>Statisches Formular</h2>
+    <div class="form-group">
+        <label>Von:</label>
+        <input
+                formControlName="von"
+                class="form-control">
+    </div>
+
+    <div *ngIf="!filter.controls.von.valid">
+        Fehlerhafte Eingabe, Du Opfer!
+    </div>
+
+    <div *ngIf="filter.controls.von.hasError('required')">
+        Muss ein doch Pflichtfeld sein!
+    </div>
+
+    <div *ngIf="filter.controls.von.hasError('minlength')">
+        Muss doch min 3 Zeichen haben!
+    </div>
+
+    <div *ngIf="filter.controls.von.hasError('maxlength')">
+        Darf doch max. 3 Zeichen haben!
+    </div>
+
+    <div *ngIf="filter.controls.von.hasError('pattern')">
+        Dürfen doch nur Buchstaben sein!!!
+    </div>
+
+    <div *ngIf="filter.controls.von.hasError('ort')">
+        Dieser Ort ist doch nicht gültig!
+    </div>
+
+    <div *ngIf="filter.controls.von.hasError('ortAsync')">
+        Für diesen Ort sind doch keine Plätze mehr frei!
+    </div>
+
+    <div *ngIf="filter.controls.von.pending">
+        <marquee>
+            Validierung wird ausgeführt!
+        </marquee>
+    </div>
+
+    <pre>
+        {{ filter.controls.von.errors | json }} **
+        {{ filter.controls.von.error | json }}
+    </pre>
+
+    <div class="form-group">
+        <label>Nach:</label>
+        <input
+                formControlName="nach"
+                class="form-control">
+    </div>
+    <div class="form-group">
+
+        <button class="btn btn-primary"
+                (click)="suchen()" [disabled]="!filter.valid">
+            Suchen!
+        </button>
+
+
+    </div>
+
+
+    <div *ngFor="let flug of fluege" class="col-sm-4">
+        <flug-card
+                [item]="flug"
+                [(selectedItem)]="selectedFlug">
+        </flug-card>
+        <!--
+                        [selectedItem]="selectedFlug"
+                (selectedItemChange)="selectedFlug = $event"
+-->
+    </div>
+
+<!--
+    <table class="table table-striped">
+        <tr *ngFor="let flug of fluege" [class.active]="flug == selectedFlug">
+            <td>{{flug.id}}</td>
+            <td>{{flug.datum | date:'d.M.yyyy H:m'}}</td>
+            <td>{{flug.abflugort | ort:'short' }}</td>
+            <td>{{flug.zielort | ort:'long'}}</td>
+            <td><a (click)="select(flug)">Select!</a></td>
+        </tr>
+    </table>
+-->
+
+</form>
+<pre>Warenkorb
+----------------------
+{{ selectedFlug | json }}
+</pre>
