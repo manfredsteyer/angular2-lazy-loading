@@ -2,7 +2,7 @@
 
 ## Überblick
 
-![Lazy Loading](lazy-modules.png)
+![Lazy Loading](lazy-modules-overview.png)
 
 ## Benötigte Software
 
